@@ -1,0 +1,61 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RailAppWPF"
+        xmlns:Collections="clr-namespace:System.Collections;assembly=System.Runtime" xmlns:Properties="clr-namespace:RailAppWPF.Properties" x:Class="RailAppWPF.MainWindow"
+        mc:Ignorable="d"
+        Title="Historical Rail Details" SizeToContent="WidthAndHeight" ResizeMode="NoResize" Closing="CloseAll">
+
+    <StackPanel>
+
+        <Menu MinHeight="20"  Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <MenuItem Header="_File">
+                <MenuItem Header="Preferences" Click="menu_preferences_Click"/>
+                <MenuItem Header="Exit" Click="menu_exit_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Margin="5,0,5,5">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="270"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="155"/>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0"  Padding="0" Content="From Location"    HorizontalAlignment="Left" VerticalAlignment="Top"  VerticalContentAlignment="Center" Margin="10,10,0,0"        Height="20"     Width="90"/>
+            <Label Grid.Row="0" Grid.Column="0"  Padding="0" Content="To Location"      HorizontalAlignment="Left" VerticalAlignment="Top"  VerticalContentAlignment="Center" Margin="10,40,0,0"        Height="20"     Width="90"/>
+            <Label Grid.Row="0" Grid.Column="0"  Padding="0" Content="On Date"          HorizontalAlignment="Left" VerticalAlignment="Top"  VerticalContentAlignment="Center" Margin="10,70,0,0"        Height="20"     Width="90"/>
+            <Label Grid.Row="0" Grid.Column="0"  Padding="0" Content="From Time"        HorizontalAlignment="Left" VerticalAlignment="Top"  VerticalContentAlignment="Center" Margin="10,100,0,0"       Height="20"     Width="90"/>
+            <Label Grid.Row="0" Grid.Column="0"  Padding="0" Content="To Time"          HorizontalAlignment="Left" VerticalAlignment="Top"  VerticalContentAlignment="Center" Margin="10,130,0,0"       Height="20"     Width="90"/>
+
+            <ComboBox Grid.Row="0" Grid.Column="1"  x:Name="from_location" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="230" IsReadOnly="False" IsEditable ="False" Height="20"/>
+            <ComboBox Grid.Row="0" Grid.Column="1" x:Name="to_location" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="230" IsReadOnly="False" IsEditable ="False" Height="20"/>
+            <DatePicker Grid.Row="0" Grid.Column="1" x:Name="on_date" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="230" Text="" FirstDayOfWeek="Monday" Height="20" IsTodayHighlighted="False"/>
+            <ComboBox Grid.Row="0" Grid.Column="1" x:Name="from_time" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="230" IsReadOnly="True" Height="20"/>
+            <ComboBox Grid.Row="0" Grid.Column="1" x:Name="to_time" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="230" IsReadOnly="True" Height="20"/>
+
+            <Button x:Name="btn_yesterday" Grid.Row="0" Grid.Column="2" Content="Yesterday" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="250" Height="20" Click="btn_yesterday_Click"/>
+            <Button x:Name="btn_morning" Grid.Row="0" Grid.Column="2" Content="Morning" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="btn_morning_Click"/>
+            <Button x:Name="btn_evening" Grid.Row="0" Grid.Column="2" Content="Evening" HorizontalAlignment="Left" Margin="140,100,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="btn_evening_Click"/>
+            <Button Grid.Row="0" Grid.Column="2" x:Name="Search" Content="Search" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="120" Click="Run_Search" Height="20"/>
+            <Button Grid.Row="0" Grid.Column="2" x:Name="btn_export_csv" Content="Export to CSV" HorizontalAlignment="Left" Height="20" Margin="140,130,0,0" VerticalAlignment="Top" Width="120" Click="btn_export_csv_Click"  />
+
+            <DataGrid Grid.Row="1" Grid.ColumnSpan="3"  x:Name="data_grid" Margin="10,5,10,0" Height="auto" Width="auto" AutoGeneratingColumn="Data_grid_autogeneratingcolumn" ColumnWidth="*" AlternatingRowBackground="Gray" IsReadOnly="True"/>
+
+            <TextBlock Grid.Row="2" Grid.ColumnSpan="3" x:Name="status_text" HorizontalAlignment="Left" Height="20" Width="540" Margin="10,0,0,0" Padding="0" Text="" VerticalAlignment="Bottom" TextAlignment="Left"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" x:Name="time_text" HorizontalAlignment="Right" Height="20" Width="150" Margin="0,0,10,0" Padding="0" Text="" VerticalAlignment="Bottom" TextAlignment="Right"/>
+
+        </Grid>
+
+    </StackPanel>
+
+</Window>
